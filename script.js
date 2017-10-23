@@ -2,6 +2,8 @@
  * Kahlia Lepple (c) 2017
  * SE 3316 - Web Technologies - Lab 2
  **/
+ 
+/*global $*/ 
 
 $(document).ready(function() {
     //Array of fruits
@@ -16,14 +18,17 @@ $(document).ready(function() {
     $("#fruitButton").click(function() {
         //Get user input
         var newFruit = $('#newfruit').val().toLowerCase();
+        
         //Make array of fruits
-        console.log(newFruit);
         var fruitArray = [];
         $("#fruits li").each(function() {
             fruitArray.push($(this).text())
         });
-        console.log(fruitArray);
+        
+        //Get index of the fruit the user wants to add to their basket
         var index = fruitArray.indexOf(newFruit);
+        
+        //Check if shelf contains the fruit
         if(index > -1) {
             //Remove fruit from shelf
             $("#fruits li").eq(index).remove();
