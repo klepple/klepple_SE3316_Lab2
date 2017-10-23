@@ -29,15 +29,14 @@ function addFruitToBasket()
     var fruit = document.getElementById("newfruit").value.toLowerCase();
     
     //Get the fruit shelf list
-    var fruitsOnShelf = document.getElementById("fruits");
+    var fruitShelf = document.getElementById("fruits");
+    var fruitsOnShelf = fruitShelf.getElementsByTagName("li");
     
     //Make an array of the text values in the list
-    var childNodes = fruitsOnShelf.childNodes;
-    var fruitArray = new Array(childNodes.length);
-
-    for(let i = 0; i < childNodes.length; i++)
+    var fruitArray = [];
+    for(let i = 0; i < fruitsOnShelf.length; i++)
     {
-        fruitArray.push(childNodes.item(i).innerText.toLowerCase());
+        fruitArray[i] = fruitsOnShelf.item(i).innerText.toLowerCase();
     }
    
     //Get index of the user's inputted fruit
@@ -47,7 +46,7 @@ function addFruitToBasket()
     if(index > -1)
     {
         //Remove fruit from shelf
-        fruitsOnShelf.removeChild(fruitsOnShelf.childNodes[index - childNodes.length]);
+        fruitShelf.removeChild(fruitShelf.childNodes[index]);
         
         //Add the fruit to the basket
         var listElem = document.createElement("LI");
